@@ -1,0 +1,18 @@
+note over browser:
+fetch form element
+event handler creates new note
+adds it to the note list
+rerenders the note list
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over browser:
+browser send data in JSON String
+end note
+
+server-->browser: HTTP Satus 201 Created
+
+note over server:
+server response "note created"
+end note
