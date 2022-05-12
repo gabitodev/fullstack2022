@@ -64,6 +64,13 @@ const App = () => {
         setNewName('');
         setNewNumber('');
         setSearch('');
+      })
+      .catch(error => {
+        setNotification({
+          message: error.response.data.error,
+          isSuccessful: false
+        });
+        setTimeout(() => setNotification(null), 5000);
       });
     }
   };
