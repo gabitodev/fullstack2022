@@ -38,7 +38,6 @@ const App = () => {
             setSearch('');
           })
           .catch(error => {
-            console.log(error)
             if (error.response.status === 404 ) {
               setNotification({
                 message: `Person ${newName} was already removed from the server`,
