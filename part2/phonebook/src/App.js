@@ -37,13 +37,22 @@ const App = () => {
             setNewNumber('');
             setSearch('');
           })
-          .catch(() => {
-            setNotification({
-              message: `Person ${newName} was already removed from the server`,
-              isSuccessful: false
-            });
-            setTimeout(() => setNotification(null), 5000);
-            setPersons(persons.filter(person => person.id !== personExist.id));
+          .catch(error => {
+            console.log(error)
+            if (error.response.status === 404 ) {
+              setNotification({
+                message: `Person ${newName} was already removed from the server`,
+                isSuccessful: false
+              });
+              setTimeout(() => setNotification(null), 5000);
+              setPersons(persons.filter(person => person.id !== personExist.id));
+            } else {
+              setNotification({
+                message: error.response.data.error,
+                isSuccessful: false
+              });
+              setTimeout(() => setNotification(null), 5000);
+            }
           })
       }
     } else {
